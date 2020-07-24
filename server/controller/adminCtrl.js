@@ -1,7 +1,7 @@
 const db = require("../config/keys");
 const adminCtrl = {};
 
-adminCtrl.displayLogin = (req, res) => res.render("admin");
+adminCtrl.displayLogin = (req, res) => res.render("adminLogin");
 
 adminCtrl.handleLogin = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ adminCtrl.handleLogin = async (req, res) => {
           req.session.username = username;
           req.session.password = password;
           console.log(`${username} login succesfully!!!`);
-          res.render("home");
+          res.render("adminDashboard");
         } else {
           console.log("Wrong username or password!");
         }
@@ -37,7 +37,7 @@ adminCtrl.handleRegister = (req, res) => {
       if (err) throw err;
       console.log(`User ${user.username} added succesfully!!!`);
     });
-    res.render("userLogin");
+    res.render("adminLogin");
   } else {
     console.log("Password do not match!!!");
   }

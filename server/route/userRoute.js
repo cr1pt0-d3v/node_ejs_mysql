@@ -5,7 +5,7 @@ const userCtrl = require("../controller/userCtrl");
 router.get("/", userCtrl.display);
 
 router.get("/login", userCtrl.displayLogin);
-router.post("/auth", userCtrl.handleLogin);
+router.post("/dashboard", userCtrl.handleLogin);
 
 router.get("/register", userCtrl.displayRegister);
 router.post("/register", userCtrl.handleRegister);

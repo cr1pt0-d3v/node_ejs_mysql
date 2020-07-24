@@ -4,7 +4,7 @@ const router = express.Router();
 const adminCtrl = require("../controller/adminCtrl");
 
 router.get("/login", adminCtrl.displayLogin);
-router.post("/auth", adminCtrl.handleLogin);
+router.post("/dashboard", adminCtrl.handleLogin);
 //register
 router.get("/register", adminCtrl.displayRegister);
 router.post("/register", adminCtrl.handleRegister);

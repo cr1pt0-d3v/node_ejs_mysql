@@ -1,7 +1,7 @@
 const db = require("../config/keys");
 const userCtrl = {};
 
-userCtrl.display = (req, res) => res.render("user");
+userCtrl.display = (req, res) => res.render("userDashboard");
 
 // login GET
 userCtrl.displayLogin = (req, res) => res.render("userLogin");
@@ -17,7 +17,7 @@ userCtrl.handleLogin = async (req, res) => {
           req.session.username = username;
           req.session.password = password;
           console.log(`${username} login succesfully!!!`);
-          res.render("user");
+          res.render("userDashboard");
         } else {
           console.log("Wrong username or password!");
         }
