@@ -1,47 +1,27 @@
 <div class="container">
     <div class="col">
         <h3 class="text-center">User Dashboard</h3>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Type</th>
-                    <th scope="col">Column heading</th>
-                    <th scope="col">Column heading</th>
-                    <th scope="col">Column heading</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-            </tbody>
-        </table>
+        <% if(data) { %>
+        <% for(let i = 0; i < data.length; i++) {%>
+
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">
+                <h4 class="card-title"> <%= data[i].title %> </h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text"> <%= data[i].content %> </p>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link" target="_blank">Read more</a>
+            </div>
+            <div class="card-footer text-muted">
+                posted by <%= data[i].author %> at <%= data[i].date %>
+            </div>
+        </div>
+
+        <% } %>
+        <% } %>
+
     </div>
+</div>
 </div>

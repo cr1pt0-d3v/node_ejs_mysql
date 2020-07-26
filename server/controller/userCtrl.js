@@ -1,7 +1,19 @@
 const db = require("../config/keys");
 const userCtrl = {};
 
-userCtrl.display = (req, res) => res.render("userDashboard");
+// display dashboard
+userCtrl.display = (req, res) => {
+  let sql = "SELECT * FROM post";
+  db.query(sql, (err, post) => {
+    if (err) {
+      console.log(err);
+      res.json(err);
+    }
+    res.render("userDashboard", {
+      data: post,
+    });
+  });
+};
 
 // login GET
 userCtrl.displayLogin = (req, res) => res.render("userLogin");
