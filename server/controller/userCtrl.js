@@ -1,4 +1,17 @@
 const db = require("../config/keys");
+
+let posts;
+
+db.query("SELECT * FROM post", (err, post) => {
+  if (err) {
+    console.log(err);
+    return err;
+  }
+  posts = post;
+  /* console.log(posts); */
+  return posts;
+});
+
 const userCtrl = {};
 
 // display dashboard
@@ -29,7 +42,7 @@ userCtrl.handleLogin = async (req, res) => {
           req.session.username = username;
           req.session.password = password;
           console.log(`${username} login succesfully!!!`);
-          res.render("userDashboard");
+          res.render("userDashboard", { data: posts });
         } else {
           console.log("Wrong username or password!");
         }
@@ -57,6 +70,18 @@ userCtrl.handleRegister = (req, res) => {
   } else {
     console.log("Password do not match!!!");
   }
+};
+
+userCtrl.deletePost = (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+
+  const sqlDelete = "DELETE FROM post WHERE id=?";
+  db.query(sqlDelete, id, (err, rows, fields) => {
+    if (err) throw err;
+    console.log(rows.affectedRows);
+    res.redirect("/");
+  });
 };
 
 module.exports = userCtrl;

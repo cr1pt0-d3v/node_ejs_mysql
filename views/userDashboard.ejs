@@ -1,6 +1,8 @@
 <div class="container">
     <div class="col">
-        <h3 class="text-center">User Dashboard</h3>
+        <div class="card border-primary m-3 p-3">
+            <h3 class="text-center">User Dashboard</h3>
+        </div>
         <% if(data) { %>
         <% for(let i = 0; i < data.length; i++) {%>
 
@@ -12,7 +14,7 @@
                 <p class="card-text"> <%= data[i].content %> </p>
             </div>
             <div class="card-body">
-                <a href="#" class="card-link" target="_blank">Read more</a>
+                <a href="/user/delete/<%= data[i].id %>" class="card-link text-white">Remove article</a>
             </div>
             <div class="card-footer text-muted">
                 posted by <%= data[i].author %> at <%= data[i].date %>
